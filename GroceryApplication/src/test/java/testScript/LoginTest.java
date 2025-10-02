@@ -7,7 +7,7 @@ import automationCore.Base;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
-public class Login_Test extends Base{
+public class LoginTest extends Base{
 	@Test
 	public void verifyLoginWithValidCredential() throws IOException
 	{
