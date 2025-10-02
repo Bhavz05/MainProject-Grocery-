@@ -21,7 +21,7 @@ public class ExcelUtility {
 		{
 			// row a& b cell values in excel 
 			
-				f=new FileInputStream("C:\\Users\\user\\eclipse-workspace\\Sample\\GroceryApplication\\src\\test\\resources\\GroceryTestData.xlsx");
+				f=new FileInputStream("C:\\Users\\user\\git\\MainProject-Grocery-\\GroceryApplication\\src\\test\\resources\\GroceryTestData.xlsx");
 				wb=new XSSFWorkbook(f);
 				sh=wb.getSheet(sheet);// method used to access details from excel sheet
 				XSSFRow r=sh.getRow(a);//XSSFRow - in built class to access details from the row, Getrow - method to get details from the row
@@ -31,7 +31,7 @@ public class ExcelUtility {
 		}
 			public static String getIntegerData(int a,int b, String sheet) throws IOException
 			{
-				f=new FileInputStream("C:\\Users\\user\\eclipse-workspace\\Sample\\GroceryApplication\\src\\test\\resources\\GroceryTestData.xlsx");
+				f=new FileInputStream("C:\\Users\\user\\git\\MainProject-Grocery-\\GroceryApplication\\src\\test\\resources\\GroceryTestData.xlsx");
 				wb=new  XSSFWorkbook(f);
 				sh=wb.getSheet(sheet);
 				XSSFRow r=sh.getRow(a);
