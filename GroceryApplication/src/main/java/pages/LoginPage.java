@@ -1,4 +1,4 @@
-package pages;
+package pages; 
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,21 +12,42 @@ public LoginPage(WebDriver driver)
 	this.driver=driver;
 	PageFactory.initElements(driver,this);
 }
+
 @FindBy(name="username")WebElement username;
 @FindBy(name="password")WebElement password;
-@FindBy(tagName="button")WebElement login;
+@FindBy(xpath= "//button[text()='Sign In']")WebElement loginBtn; // or @FindBy(tagName="button")WebElement loginBtn; 
 
-public void enterUsernameOnUsername(String userNameValue)
-{
+@FindBy(xpath="//p[text()='Dashboard']")WebElement dashBoard;//Assert True
+@FindBy(xpath="//b[text()='7rmart supermarket']")WebElement loginTitle;//AssertEquals
+@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")WebElement alertbox;// Assert False(WE of Invalid alert)
+
+public void enterUserNameOnUserNameField(String userNameValue) {
 	username.sendKeys(userNameValue);
 }
-public void enterPasswordOnPassword(String PasswordValue)
-{
-	password.sendKeys(PasswordValue);
-}
-public void enterLoginButtonCLick()
-{
-	login.click();
 
+public void enterPasswordOnPasswordField(String passwordValue) {
+	password.sendKeys(passwordValue);
+}
+
+public void loginButtonClick() {
+	loginBtn.click();
+}
+
+public boolean isDashboardDisplayed() { //Assert True
+	
+	return dashBoard.isDisplayed();
+}
+
+public String isTitleDisplayed() { //Assert Equals
+	return loginTitle.getText();
+}
+
+public boolean isAlertboxDisplayed() { //Assert False
+	return alertbox.isDisplayed();
+}
+
+public String actualURL()    // AssertEquals using URL check
+{
+	return driver.getCurrentUrl(); 
 }
 }
