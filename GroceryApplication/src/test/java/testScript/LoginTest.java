@@ -11,7 +11,7 @@ import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class LoginTest extends Base{
-	@Test
+	@Test(priority=1,description="User is try to login with valid credentials",groups= {"smoke"})
 	public void verifyWetherUserIsAbleToLoginWithValidCredentials() throws IOException {
 		String userNameValue = ExcelUtility.getStringData(0, 0, "LoginPage");
 		String passwordValue = ExcelUtility.getStringData(0, 1, "LoginPage");
@@ -24,7 +24,7 @@ public class LoginTest extends Base{
 		Assert.assertTrue(dashBoardDisplay, "User was unable to Login with valid credentials"); //AssertTrue
 	}
 
-	@Test
+	@Test(priority=2)
 	public void verifyWetherUserIsAbleToLoginWithValidUsernameAndInvalidPassword() throws IOException {
 		String userNameValue = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String passwordValue = ExcelUtility.getStringData(1, 1, "LoginPage");
@@ -39,7 +39,7 @@ public class LoginTest extends Base{
 	
 	}
 
-	@Test
+	@Test(priority=3)
 	public void verifyWetherUserIsAbleToLoginWithInvalidUsernameAndValidPassword() throws IOException {
 		String userNameValue = ExcelUtility.getStringData(2, 0, "LoginPage");
 		String passwordValue = ExcelUtility.getStringData(2, 1, "LoginPage");
@@ -56,7 +56,7 @@ public class LoginTest extends Base{
 		Assert.assertEquals(actual, expected,"user is able to login with invalid credentials");*/
 	}
 	
-	@Test
+	@Test(priority=4,groups= {"smoke"})
 	public void verifyWetherUserIsAbleToLoginWithInvalidUsernameAndInvalidPassword() throws IOException {
 		String userNameValue = ExcelUtility.getStringData(3, 0, "LoginPage");
 		String passwordValue = ExcelUtility.getStringData(3, 1, "LoginPage");
