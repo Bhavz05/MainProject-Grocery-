@@ -4,7 +4,10 @@ import java.io.IOException;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import com.sun.net.httpserver.Authenticator.Retry;
 
 import automationCore.Base;
 import pages.LoginPage;
@@ -24,9 +27,9 @@ public class LoginTest extends Base{
 		Assert.assertTrue(dashBoardDisplay, "User was unable to Login with valid credentials"); //AssertTrue
 	}
 
-	@Test(priority=2)
+	@Test(priority=2,description="user is try to login with invalid credentilas",retryAnalyzer =retrymechanism.Retry.class)
 	public void verifyWetherUserIsAbleToLoginWithValidUsernameAndInvalidPassword() throws IOException {
-		String userNameValue = ExcelUtility.getStringData(1, 0, "LoginPage");
+		String userNameValue = ExcelUtility.getStringData(11, 0, "LoginPage");
 		String passwordValue = ExcelUtility.getStringData(1, 1, "LoginPage");
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.enterUserNameOnUserNameField(userNameValue);
@@ -56,10 +59,10 @@ public class LoginTest extends Base{
 		Assert.assertEquals(actual, expected,"user is able to login with invalid credentials");*/
 	}
 	
-	@Test(priority=4,groups= {"smoke"})
-	public void verifyWetherUserIsAbleToLoginWithInvalidUsernameAndInvalidPassword() throws IOException {
-		String userNameValue = ExcelUtility.getStringData(3, 0, "LoginPage");
-		String passwordValue = ExcelUtility.getStringData(3, 1, "LoginPage");
+	@Test(priority=4,groups= {"smoke"},dataProvider = "loginProvider")
+	public void verifyWetherUserIsAbleToLoginWithInvalidUsernameAndInvalidPassword(String userNameValue,String passwordValue) throws IOException {
+		//String userNameValue = ExcelUtility.getStringData(3, 0, "LoginPage");
+		//String passwordValue = ExcelUtility.getStringData(3, 1, "LoginPage");
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.enterUserNameOnUserNameField(userNameValue);
 		loginpage.enterPasswordOnPasswordField(passwordValue);
@@ -69,4 +72,14 @@ public class LoginTest extends Base{
 		System.out.println(alertboxDisplay); 
 		Assert.assertFalse(!alertboxDisplay,"user is able to login with invalid credentials"); // ! = NOT, here false
 	}
+	@DataProvider(name = "loginProvider")
+	public Object[][] getDataFromDataProvider() throws IOException {
+
+	return new Object[][] { new Object[] { "admin", "admin22" }, new Object[] { "admin123", "123" },
+	// new Object[] {ExcelUtility.getStringData(3,
+	// 0,"Login"),ExcelUtility.getStringData(3,1 ,"Login")}
+	};
+	}
 }
+
+
