@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite parallel="classes" name="Failed suite [mutibroser]" guice-stage="DEVELOPMENT">
+<suite parallel="classes" name="Failed suite [parallel]" guice-stage="DEVELOPMENT">
   <test thread-count="5" parallel="classes" name="Test2(failed)">
-    <parameter name="browsers" value="FireFox"/>
+    <parameter name="browsers" value="chrome"/>
     <classes>
       <class name="testScript.LoginTest">
         <methods>
@@ -13,4 +13,4 @@
       </class> <!-- testScript.LoginTest -->
     </classes>
   </test> <!-- Test2(failed) -->
-</suite> <!-- Failed suite [mutibroser] -->
+</suite> <!-- Failed suite [parallel] -->
