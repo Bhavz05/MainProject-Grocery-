@@ -1,6 +1,7 @@
 package testScript;
 
 import java.io.IOException;
+import java.lang.invoke.ConstantBootstraps;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -10,6 +11,7 @@ import org.testng.annotations.Test;
 import com.sun.net.httpserver.Authenticator.Retry;
 
 import automationCore.Base;
+import constants.Constant;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
@@ -24,7 +26,7 @@ public class LoginTest extends Base{
 		loginpage.loginButtonClick();
 		
 		Boolean dashBoardDisplay = loginpage.isDashboardDisplayed(); //Assert True
-		Assert.assertTrue(dashBoardDisplay, "User was unable to Login with valid credentials"); //AssertTrue
+		Assert.assertTrue(dashBoardDisplay,Constant.VALIDCREDENTIALERROR); //AssertTrue
 	}
 
 	@Test(priority=2,description="user is try to login with invalid credentilas",retryAnalyzer =retrymechanism.Retry.class)
@@ -38,7 +40,7 @@ public class LoginTest extends Base{
 		
 		String expected ="7rmart supermarket"; //Assert Equals
 		String actual=loginpage.isTitleDisplayed();// A E
-		Assert.assertEquals(actual, expected,"user was able to login with Invalid credentials");// A E
+		Assert.assertEquals(actual, expected,Constant.VALIDUSERNAMEINVALIDPASSWORDERROR);// A E
 	
 	}
 
@@ -52,7 +54,7 @@ public class LoginTest extends Base{
 		loginpage.loginButtonClick();
 		
 		boolean alertBoxDisplayed= loginpage.isAlertboxDisplayed();
-		Assert.assertTrue(alertBoxDisplayed, "user is able to login with invalid credentials");
+		Assert.assertTrue(alertBoxDisplayed,Constant.INVALIDUSERNAMEVALIDPASSWORD);
 		
 		/*String expected ="https://groceryapp.uniqassosiates.com/admin/login"; //Assert Equals with URL check 
 		String actual=loginpage.actualURL();
@@ -70,7 +72,7 @@ public class LoginTest extends Base{
 		
 		Boolean alertboxDisplay = loginpage.isAlertboxDisplayed(); //assertFalse
 		System.out.println(alertboxDisplay); 
-		Assert.assertFalse(!alertboxDisplay,"user is able to login with invalid credentials"); // ! = NOT, here false
+		Assert.assertFalse(!alertboxDisplay,Constant.INUSERNAMEINPASSWORD); // ! = NOT, here false
 	}
 	@DataProvider(name = "loginProvider")
 	public Object[][] getDataFromDataProvider() throws IOException {

@@ -5,8 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.WaitUtility;
+
 public class LoginPage {
 	public WebDriver driver;
+	WaitUtility wait= new WaitUtility();
 public LoginPage(WebDriver driver)
 {
 	this.driver=driver;
@@ -30,6 +33,7 @@ public void enterPasswordOnPasswordField(String passwordValue) {
 }
 
 public void loginButtonClick() {
+	wait.waitUntilElementToBeClickable(driver, loginBtn);//wait applied
 	loginBtn.click();
 }
 
