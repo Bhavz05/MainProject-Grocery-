@@ -24,17 +24,20 @@ public LoginPage(WebDriver driver)
 @FindBy(xpath="//b[text()='7rmart supermarket']")WebElement loginTitle;//AssertEquals
 @FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")WebElement alertbox;// Assert False(WE of Invalid alert)
 
-public void enterUserNameOnUserNameField(String userNameValue) {
+public LoginPage enterUserNameOnUserNameField(String userNameValue) {
 	username.sendKeys(userNameValue);
+	return this;
 }
 
-public void enterPasswordOnPasswordField(String passwordValue) {
+public LoginPage enterPasswordOnPasswordField(String passwordValue) {
 	password.sendKeys(passwordValue);
+	return this;
 }
 
-public void loginButtonClick() {
+public HomePage loginButtonClick() {
 	wait.waitUntilElementToBeClickable(driver, loginBtn);//wait applied
 	loginBtn.click();
+	return new HomePage(driver);
 }
 
 public boolean isDashboardDisplayed() { //Assert True

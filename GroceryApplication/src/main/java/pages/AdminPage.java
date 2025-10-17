@@ -53,28 +53,33 @@ public class AdminPage {
 	@FindBy(xpath="//tr[1]/td[1]")WebElement searchUser; 
 	//@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr[1]/td[1]") WebElement searchUser;
 
-	public void newBtnClick() {
+	public AdminPage newBtnClick() {
 		newBtn.click();
+		return this;
 	}
 
-	public void enterUsernameOnUsernameField(String usernameVal) {
+	public AdminPage enterUsernameOnUsernameField(String usernameVal) {
 		username.sendKeys(usernameVal);
+		return this;
 	}
 
-	public void enterPasswordOnPasswordField(String passwordVal) {
+	public AdminPage enterPasswordOnPasswordField(String passwordVal) {
 		password.sendKeys(passwordVal);
+		return this;
 	}
 
-	public void selectDrpDwn() {
+	public AdminPage selectDrpDwn() {
 		Select select = new Select(userTypeDrpDwn);
 		select.selectByValue("partner");
 		pageutilty.selectDropdownWithValue(userTypeDrpDwn, "partner");//pageutility used here
+		return this;
 	}
 
-	public void saveBtnClick() {
+	public AdminPage saveBtnClick() {
 		saveBtn.click();
+		return this;
 	}
-
+//Assertion method
 	public String AlertDisplayed() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		WebElement alertBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
@@ -82,28 +87,33 @@ public class AdminPage {
 		return alertBox.getText();
 	}
 
-	public void searchBtnClick() {
+	public AdminPage searchBtnClick() {
 		searchBtn.click();
+		return this;
 	}
 
-	public void enterUsernameOnSearchUsernameField() {
+	public AdminPage enterUsernameOnSearchUsernameField() {
 		searchUserName.sendKeys("pla");
+		return this;
 	}
 
-	public void searchDrpDwn() {
+	public AdminPage searchDrpDwn() {
 		Select select = new Select(searchDrpDwn);
 		select.selectByValue("staff");
 		pageutilty.selectDropdownWithValue(searchDrpDwn, "staff");//pageutility used here
+		return this;
 	}
 
-	public void searchUserBtnClick() {
+	public AdminPage searchUserBtnClick() {
 		srchBtn.click();
+		return this;
 	}
 
-	public void resetBtnClick() {
+	public AdminPage resetBtnClick() {
 		resetBtn.click();
+		return this;
 	}
-
+//Assertion method
 	public boolean IsresetHappen() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.invisibilityOf(searchUserName));
@@ -111,7 +121,7 @@ public class AdminPage {
 	}
 
 	public String actualURL() {
-		return driver.getCurrentUrl();
+		return driver.getCurrentUrl();//Assertion method
 	}
 	
 	//Assertion methods

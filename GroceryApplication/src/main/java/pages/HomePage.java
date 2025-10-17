@@ -17,20 +17,24 @@ public HomePage(WebDriver driver)
 @FindBy(xpath="//p[text()='Admin Users']/ancestor::div[@class='small-box bg-info']/a") WebElement moreInfolink;
 @FindBy(xpath="//a[@class='small-box-footer' and contains(@href, 'list-news')]") WebElement moreInfoManage;
 
-public void adminIconClick()
+public HomePage adminIconClick()
 {
 	adminIcon.click();
+	return this;
 }
-public void LogOutClick()
+public LoginPage LogOutClick()
 {
 	logout.click();
+	return new LoginPage(driver);
 }
-public void moreInfoLinkClick() 
+public AdminPage moreInfoLinkClick() 
 {
 	moreInfolink.click();
+	return new AdminPage(driver);
 }
-public void moreInfoManage()
+public ManageNewsPage moreInfoManage()
 {
 	moreInfoManage.click();
+	return new ManageNewsPage(driver);
 }
 }

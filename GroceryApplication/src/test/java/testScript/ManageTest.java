@@ -8,29 +8,28 @@ import org.testng.annotations.Test;
 
 import automationCore.Base;
 import constants.Constant;
+import pages.AdminPage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ManageNewsPage;
 import utilities.ExcelUtility;
 
 public class ManageTest extends Base{
-
+	HomePage homePage;
+	ManageNewsPage mnt;
      @Test	
      public void verifyWhetherUserIsAbleToAddNewNews() throws IOException {
     	String userNameValue = ExcelUtility.getStringData(0, 0, "LoginPage");
  		String passwordValue = ExcelUtility.getStringData(0, 1, "LoginPage");
  		LoginPage loginpage = new LoginPage(driver);
- 		loginpage.enterUserNameOnUserNameField(userNameValue);
- 		loginpage.enterPasswordOnPasswordField(passwordValue);
- 		loginpage.loginButtonClick();
+ 		loginpage.enterUserNameOnUserNameField(userNameValue).enterPasswordOnPasswordField(passwordValue);
+ 		homePage=loginpage.loginButtonClick();
  		
- 		HomePage homePage = new HomePage(driver);
- 		homePage.moreInfoManage();
+ 		//HomePage homePage = new HomePage(driver);
+ 		mnt=homePage.moreInfoManage();
  		
- 		ManageNewsPage mnt = new ManageNewsPage(driver);
- 		mnt.newBtnClick();
- 		mnt.newsTextBoxMsg();
- 		mnt.saveBtnClick();
+ 		//ManageNewsPage mnt = new ManageNewsPage(driver);
+ 		mnt.newBtnClick().newsTextBoxMsg().saveBtnClick();
  		
  		boolean newscreatedSuccess =mnt.isNewsCreationSuccessAlertDisplayed();
   		System.out.println(newscreatedSuccess);
@@ -45,17 +44,14 @@ public class ManageTest extends Base{
     	String userNameValue = ExcelUtility.getStringData(0, 0, "LoginPage");
   		String passwordValue = ExcelUtility.getStringData(0, 1, "LoginPage");
   		LoginPage loginpage = new LoginPage(driver);
-  		loginpage.enterUserNameOnUserNameField(userNameValue);
-  		loginpage.enterPasswordOnPasswordField(passwordValue);
-  		loginpage.loginButtonClick();
+  		loginpage.enterUserNameOnUserNameField(userNameValue).enterPasswordOnPasswordField(passwordValue);
+  		homePage=loginpage.loginButtonClick();
   		
-  		HomePage homePage = new HomePage(driver);
-  		homePage.moreInfoManage();
+  		//HomePage homePage = new HomePage(driver);
+  		mnt=homePage.moreInfoManage();
   		
-  		ManageNewsPage mnt = new ManageNewsPage(driver);
-  		mnt.searchBtnClick();
-  		mnt.searchNewsText();
-  		mnt.searchSubmitBtnClick();
+  		//ManageNewsPage mnt = new ManageNewsPage(driver);
+  		mnt.searchBtnClick().searchNewsText().searchSubmitBtnClick();
   		
   		String expected= "News Today";
   		String actual = mnt.isUserListed();

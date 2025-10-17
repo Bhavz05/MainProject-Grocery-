@@ -5,9 +5,9 @@
   <test thread-count="5" name="Test">
     <classes>
     
-    <class name="testScript.ManageTest">
+    <class name="testScript.AdminTest">
     <methods>
-    <include name="verifyWhetherUserIsAbleToAddNewNews"></include>
+    <include name="verifyUserIsAbleToReset"></include>
     </methods>    
     
     </class>
