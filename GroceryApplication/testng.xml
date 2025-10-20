@@ -7,10 +7,12 @@
     <classes>
     
     <class name="testScript.LoginTest">
-    <methods>
-    <include name="verifyWetherUserIsAbleToLoginWithInvalidUsernameAndInvalidPassword"></include>
-    </methods>    
-    
+    </class>
+    <class name="testScript.HomeTest">
+    </class>
+    <class name="testScript.AdminTest">
+    </class>
+    <class name="testscript.ManageTest">
     </class>
     </classes>
   </test> <!-- Test -->
