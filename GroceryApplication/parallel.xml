@@ -3,21 +3,21 @@
 <suite name="parallel" parallel="classes">
 
 
-  <test thread-count="5" name="Test1">
-  <parameter name="browsers" value="chrome"></parameter>
-    <classes>
-    <class name="testScript.LoginTest">
-    </class>
-    </classes>
-  </test>
-  
-      <test thread-count="5" name="Test2">
-  <parameter name="browsers" value="chrome"></parameter>
-    <classes>
-    <class name="testScript.LoginTest">
-    </class>
-    </classes>
-  </test>
-    
-  
+	<test thread-count="5" name="Test1">
+		<parameter name="browsers" value="chrome"></parameter>
+		<classes>
+			<class name="testScript.LoginTest">
+			</class>
+		</classes>
+	</test>
+
+	<test thread-count="5" name="Test2">
+		<parameter name="browsers" value="chrome"></parameter>
+		<classes>
+			<class name="testScript.LoginTest">
+			</class>
+		</classes>
+	</test>
+
+
 </suite> <!-- Suite -->

@@ -3,37 +3,38 @@
 <suite name="crossbrowser">
 
 
-  <test thread-count="5" name="ChromeTest">
-  <parameter name="browsers" value="chrome"></parameter>
+	<test thread-count="5" name="ChromeTest">
+		<parameter name="browsers" value="chrome"></parameter>
 
-    <classes>
-    
-    <class name="testScript.HomeTest">
-    
-    
-    </class>
-    </classes>
-  </test> <!-- Test -->
-   <test thread-count="5" name="FirefoxTest">
-  <parameter name="browsers" value="firefox"></parameter>
+		<classes>
 
-    <classes>
-    
-    <class name="testScript.HomeTest">
-    
-    
-    </class>
-    </classes>
-    </test>
-     <test thread-count="5" name="EdgeTest">
-  <parameter name="browsers" value="edge"></parameter>
+			<class name="testScript.HomeTest">
 
-    <classes>
-    
-    <class name="testScript.HomeTest">
-    
-    
-    </class>
-    </classes>
-  </test> 
-</suite> <!-- Suite -->
+
+			</class>
+		</classes>
+	</test> <!-- Test -->
+	<test thread-count="5" name="FirefoxTest">
+		<parameter name="browsers" value="firefox"></parameter>
+
+		<classes>
+
+			<class name="testScript.HomeTest">
+
+
+			</class>
+		</classes>
+	</test>
+	<test thread-count="5" name="EdgeTest">
+		<parameter name="browsers" value="edge"></parameter>
+
+		<classes>
+
+			<class name="testScript.HomeTest">
+
+
+			</class>
+		</classes>
+	</test>
+</suite> <!--
+Suite -->

@@ -16,24 +16,26 @@ import utilities.RandomDataUtility;
 public class AdminTest extends Base {
 	HomePage homepage;
 	AdminPage adminPage;
+
 	@Test
 	public void verifyUserIsAbleToAddNewUser() throws IOException {
 		String userNameValue = ExcelUtility.getStringData(0, 0, "LoginPage");
 		String passwordValue = ExcelUtility.getStringData(0, 1, "LoginPage");
-		LoginPage login = new LoginPage(driver).enterUserNameOnUserNameField(userNameValue).enterPasswordOnPasswordField(passwordValue);
-		homepage=login.loginButtonClick();
+		LoginPage login = new LoginPage(driver).enterUserNameOnUserNameField(userNameValue)
+				.enterPasswordOnPasswordField(passwordValue);
+		homepage = login.loginButtonClick();
 
-	
-		adminPage=homepage.moreInfoLinkClick();
+		adminPage = homepage.moreInfoLinkClick();
 
-		//AdminPage admin = new AdminPage(driver);
+		// AdminPage admin = new AdminPage(driver);
 
 		RandomDataUtility random = new RandomDataUtility();
 		String usernameVal = random.createRandomUserName();
 		String passwordVal = random.createRandomPassword();
 
 		adminPage.newBtnClick();
-		adminPage.enterUsernameOnUsernameField(usernameVal).enterPasswordOnPasswordField(passwordVal).selectDrpDwn().saveBtnClick();
+		adminPage.enterUsernameOnUsernameField(usernameVal).enterPasswordOnPasswordField(passwordVal).selectDrpDwn()
+				.saveBtnClick();
 
 		// Assertion
 
@@ -50,12 +52,11 @@ public class AdminTest extends Base {
 		String passwordValue = ExcelUtility.getStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
 		login.enterUserNameOnUserNameField(userNameValue).enterPasswordOnPasswordField(passwordValue);
-		homepage=login.loginButtonClick();
+		homepage = login.loginButtonClick();
 
-		
-		adminPage=homepage.moreInfoLinkClick();
+		adminPage = homepage.moreInfoLinkClick();
 
-		//AdminPage admin = new AdminPage(driver);
+		// AdminPage admin = new AdminPage(driver);
 
 		adminPage.searchBtnClick().enterUsernameOnSearchUsernameField().searchDrpDwn().searchUserBtnClick();
 
@@ -75,12 +76,11 @@ public class AdminTest extends Base {
 		String passwordValue = ExcelUtility.getStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
 		login.enterUserNameOnUserNameField(userNameValue).enterPasswordOnPasswordField(passwordValue);
-		homepage=login.loginButtonClick();
+		homepage = login.loginButtonClick();
 
-		
-		adminPage=homepage.moreInfoLinkClick();
+		adminPage = homepage.moreInfoLinkClick();
 
-		//AdminPage admin = new AdminPage(driver);
+		// AdminPage admin = new AdminPage(driver);
 
 		adminPage.searchBtnClick().enterUsernameOnSearchUsernameField().resetBtnClick();
 

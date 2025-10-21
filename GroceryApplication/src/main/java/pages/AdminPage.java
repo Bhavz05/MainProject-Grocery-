@@ -16,8 +16,8 @@ import utilities.WaitUtility;
 
 public class AdminPage {
 	public WebDriver driver;
-	WaitUtility wait= new WaitUtility();
-	PageUtility pageutilty= new PageUtility();
+	WaitUtility wait = new WaitUtility();
+	PageUtility pageutilty = new PageUtility();
 
 	public AdminPage(WebDriver driver) {
 		this.driver = driver;
@@ -47,11 +47,14 @@ public class AdminPage {
 
 	@FindBy(xpath = "//i[@class='ace-icon fa fa-sync-alt']")
 	WebElement resetBtn;
-	
-	//Assertion
-	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")WebElement newAlert;
-	@FindBy(xpath="//tr[1]/td[1]")WebElement searchUser; 
-	//@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr[1]/td[1]") WebElement searchUser;
+
+	// Assertion
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	WebElement newAlert;
+	@FindBy(xpath = "//tr[1]/td[1]")
+	WebElement searchUser;
+	// @FindBy(xpath="//table[@class='table table-bordered table-hover
+	// table-sm']/tbody/tr[1]/td[1]") WebElement searchUser;
 
 	public AdminPage newBtnClick() {
 		newBtn.click();
@@ -71,7 +74,7 @@ public class AdminPage {
 	public AdminPage selectDrpDwn() {
 		Select select = new Select(userTypeDrpDwn);
 		select.selectByValue("partner");
-		pageutilty.selectDropdownWithValue(userTypeDrpDwn, "partner");//pageutility used here
+		pageutilty.selectDropdownWithValue(userTypeDrpDwn, "partner");// pageutility used here
 		return this;
 	}
 
@@ -79,6 +82,7 @@ public class AdminPage {
 		saveBtn.click();
 		return this;
 	}
+
 //Assertion method
 	public String AlertDisplayed() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -100,7 +104,7 @@ public class AdminPage {
 	public AdminPage searchDrpDwn() {
 		Select select = new Select(searchDrpDwn);
 		select.selectByValue("staff");
-		pageutilty.selectDropdownWithValue(searchDrpDwn, "staff");//pageutility used here
+		pageutilty.selectDropdownWithValue(searchDrpDwn, "staff");// pageutility used here
 		return this;
 	}
 
@@ -113,6 +117,7 @@ public class AdminPage {
 		resetBtn.click();
 		return this;
 	}
+
 //Assertion method
 	public boolean IsresetHappen() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -121,24 +126,28 @@ public class AdminPage {
 	}
 
 	public String actualURL() {
-		return driver.getCurrentUrl();//Assertion method
-	}
-	
-	//Assertion methods
-		public String alertDisplayed() {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			WebElement alertBox = wait.until(ExpectedConditions.visibilityOfElementLocated( //visibility .. here element?
-			    By.xpath("//div[contains(@class,'alert') and contains(@class,'alert-dismissible')]") // bcoz alert can be 'added successfully' or 'already registered'
-			));
-			return alertBox.getText(); 
-			
-		}
-		public String searchTable()
-		{
-			
-			wait.waitUntilElementVisible(driver, searchUser); // To avoid assertion failure due to invisiblity of searchUser element
-			return searchUser.getText();
-		}
-		
+		return driver.getCurrentUrl();// Assertion method
 	}
 
+	// Assertion methods
+	public String alertDisplayed() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement alertBox = wait.until(ExpectedConditions.visibilityOfElementLocated( // visibility .. here element?
+				By.xpath("//div[contains(@class,'alert') and contains(@class,'alert-dismissible')]") // bcoz alert can
+																										// be 'added
+																										// successfully'
+																										// or 'already
+																										// registered'
+		));
+		return alertBox.getText();
+
+	}
+
+	public String searchTable() {
+
+		wait.waitUntilElementVisible(driver, searchUser); // To avoid assertion failure due to invisiblity of searchUser
+															// element
+		return searchUser.getText();
+	}
+
+}

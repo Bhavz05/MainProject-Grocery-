@@ -1,4 +1,4 @@
-package pages; 
+package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,52 +9,58 @@ import utilities.WaitUtility;
 
 public class LoginPage {
 	public WebDriver driver;
-	WaitUtility wait= new WaitUtility();
-public LoginPage(WebDriver driver)
-{
-	this.driver=driver;
-	PageFactory.initElements(driver,this);
-}
+	WaitUtility wait = new WaitUtility();
 
-@FindBy(name="username")WebElement username;
-@FindBy(name="password")WebElement password;
-@FindBy(xpath= "//button[text()='Sign In']")WebElement loginBtn; // or @FindBy(tagName="button")WebElement loginBtn; 
+	public LoginPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
 
-@FindBy(xpath="//p[text()='Dashboard']")WebElement dashBoard;//Assert True
-@FindBy(xpath="//b[text()='7rmart supermarket']")WebElement loginTitle;//AssertEquals
-@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")WebElement alertbox;// Assert False(WE of Invalid alert)
+	@FindBy(name = "username")
+	WebElement username;
+	@FindBy(name = "password")
+	WebElement password;
+	@FindBy(xpath = "//button[text()='Sign In']")
+	WebElement loginBtn; // or @FindBy(tagName="button")WebElement loginBtn;
 
-public LoginPage enterUserNameOnUserNameField(String userNameValue) {
-	username.sendKeys(userNameValue);
-	return this;
-}
+	@FindBy(xpath = "//p[text()='Dashboard']")
+	WebElement dashBoard;// Assert True
+	@FindBy(xpath = "//b[text()='7rmart supermarket']")
+	WebElement loginTitle;// AssertEquals
+	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
+	WebElement alertbox;// Assert False(WE of Invalid alert)
 
-public LoginPage enterPasswordOnPasswordField(String passwordValue) {
-	password.sendKeys(passwordValue);
-	return this;
-}
+	public LoginPage enterUserNameOnUserNameField(String userNameValue) {
+		username.sendKeys(userNameValue);
+		return this;
+	}
 
-public HomePage loginButtonClick() {
-	wait.waitUntilElementToBeClickable(driver, loginBtn);//wait applied
-	loginBtn.click();
-	return new HomePage(driver);
-}
+	public LoginPage enterPasswordOnPasswordField(String passwordValue) {
+		password.sendKeys(passwordValue);
+		return this;
+	}
 
-public boolean isDashboardDisplayed() { //Assert True
-	
-	return dashBoard.isDisplayed();
-}
+	public HomePage loginButtonClick() {
+		wait.waitUntilElementToBeClickable(driver, loginBtn);// wait applied
+		loginBtn.click();
+		return new HomePage(driver);
+	}
 
-public String isTitleDisplayed() { //Assert Equals
-	return loginTitle.getText();
-}
+	public boolean isDashboardDisplayed() { // Assert True
 
-public boolean isAlertboxDisplayed() { //Assert False
-	return alertbox.isDisplayed();
-}
+		return dashBoard.isDisplayed();
+	}
 
-public String actualURL()    // AssertEquals using URL check
-{
-	return driver.getCurrentUrl(); 
-}
+	public String isTitleDisplayed() { // Assert Equals
+		return loginTitle.getText();
+	}
+
+	public boolean isAlertboxDisplayed() { // Assert False
+		return alertbox.isDisplayed();
+	}
+
+	public String actualURL() // AssertEquals using URL check
+	{
+		return driver.getCurrentUrl();
+	}
 }

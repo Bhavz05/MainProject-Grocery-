@@ -13,6 +13,7 @@ import utilities.ExcelUtility;
 
 public class HomeTest extends Base {
 	HomePage homePage;
+
 	@Test
 	public void verifyLoginWithValidCredential() throws IOException {
 
@@ -20,13 +21,13 @@ public class HomeTest extends Base {
 		String PasswordValue = ExcelUtility.getStringData(0, 1, "LoginPage");
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.enterUserNameOnUserNameField(userNameValue).enterPasswordOnPasswordField(PasswordValue);
-		homePage= loginpage.loginButtonClick();
-		
+		homePage = loginpage.loginButtonClick();
+
 		homePage.adminIconClick();
-		loginpage=homePage.LogOutClick();
-		
-		String expected= "https://groceryapp.uniqassosiates.com/admin/login"; //Assertion
-		String actual= loginpage.actualURL();
+		loginpage = homePage.LogOutClick();
+
+		String expected = "https://groceryapp.uniqassosiates.com/admin/login"; // Assertion
+		String actual = loginpage.actualURL();
 		System.out.println(actual);
 		Assert.assertEquals(actual, expected, Constant.HOMEVALIDCREDENTIAL);
 	}
